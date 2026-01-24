@@ -2,28 +2,58 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Buscador de Rotaciones</title>
+<title>Rotaciones 5° J</title>
 
 <style>
 body {
   font-family: Arial, sans-serif;
-  background: #f4f6f8;
-  padding: 30px;
+  background: linear-gradient(135deg, #e3f2fd, #f4f6f8);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .card {
   background: white;
-  padding: 20px;
-  max-width: 520px;
-  margin: auto;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  padding: 25px;
+  width: 100%;
+  max-width: 560px;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+}
+
+.header {
+  text-align: center;
+}
+
+.header img {
+  max-width: 120px;
+  margin-bottom: 15px;
+}
+
+.header h1 {
+  font-size: 24px;
+  color: #0d47a1;
+  margin-bottom: 5px;
+}
+
+.header h2 {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-top: 12px;
 }
 
 select, button {
   width: 100%;
   padding: 10px;
-  margin-top: 10px;
+  margin-top: 8px;
   font-size: 16px;
 }
 
@@ -33,16 +63,17 @@ button {
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  margin-top: 15px;
 }
 
 button:hover {
-  background: #125aa0;
+  background: #0d47a1;
 }
 
 .resultado {
   margin-top: 20px;
   padding: 15px;
-  background: #e9f5ff;
+  background: #e3f2fd;
   border-radius: 8px;
   display: none;
 }
@@ -52,7 +83,14 @@ button:hover {
 <body>
 
 <div class="card">
-  <h2>Buscador de Rotaciones</h2>
+
+  <div class="header">
+    <!-- CAMBIA logo.png POR EL NOMBRE DE TU IMAGEN -->
+    <img src="logo.png" alt="Logo">
+
+    <h1>ROTACIONES 5° "J"</h1>
+    <h2>SEMESTRE ENERO – JULIO 2026</h2>
+  </div>
 
   <label>Selecciona tu equipo</label>
   <select id="equipo">
@@ -82,6 +120,7 @@ button:hover {
   <button onclick="buscar()">Buscar</button>
 
   <div class="resultado" id="resultado"></div>
+
 </div>
 
 <script>
@@ -93,11 +132,11 @@ const datos = {
       "Garcia Lopez Marian"
     ],
     rotaciones: {
-      1:{periodo:"Enero - Febrero",hospital:"Hospital General",doctor:"Dr. Pérez"},
-      2:{periodo:"Marzo - Abril",hospital:"IMSS",doctor:"Dra. López"},
-      3:{periodo:"Mayo - Junio",hospital:"ISSSTE",doctor:"Dr. Hernández"},
-      4:{periodo:"Julio - Agosto",hospital:"Hospital Civil",doctor:"Dr. Ramírez"},
-      5:{periodo:"Septiembre - Octubre",hospital:"Hospital General",doctor:"Dr. Cruz"}
+      1:{periodo:"Por definir",hospital:"Por definir",doctor:"Por definir"},
+      2:{periodo:"Por definir",hospital:"Por definir",doctor:"Por definir"},
+      3:{periodo:"Por definir",hospital:"Por definir",doctor:"Por definir"},
+      4:{periodo:"Por definir",hospital:"Por definir",doctor:"Por definir"},
+      5:{periodo:"Por definir",hospital:"Por definir",doctor:"Por definir"}
     }
   },
 
@@ -192,13 +231,13 @@ function buscar() {
     return;
   }
 
-  const info = datos[equipo].rotaciones[rotacion];
+  const info = datos[equipo].rotaciones[rotacion] || {};
 
   resultado.style.display = "block";
   resultado.innerHTML = `
-    <strong>Periodo:</strong> ${info?.periodo || "Por definir"}<br>
-    <strong>Hospital:</strong> ${info?.hospital || "Por definir"}<br>
-    <strong>Doctor:</strong> ${info?.doctor || "Por definir"}<br><br>
+    <strong>Periodo:</strong> ${info.periodo || "Por definir"}<br>
+    <strong>Hospital:</strong> ${info.hospital || "Por definir"}<br>
+    <strong>Doctor:</strong> ${info.doctor || "Por definir"}<br><br>
     <strong>Integrantes del equipo:</strong><br>
     ${datos[equipo].integrantes.join("<br>")}
   `;
