@@ -7,23 +7,34 @@
 <style>
 body {
   font-family: Arial, sans-serif;
-  background: #f4f6f8;
+  background: linear-gradient(135deg, #e3f2fd, #f4f6f8);
   padding: 30px;
 }
 
 .card {
   background: white;
-  padding: 20px;
+  padding: 25px;
   max-width: 520px;
   margin: auto;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-select, button {
+h2 {
+  text-align: center;
+  color: #0d47a1;
+}
+
+label {
+  font-weight: bold;
+  margin-top: 10px;
+  display: block;
+}
+
+select, input, button {
   width: 100%;
   padding: 10px;
-  margin-top: 10px;
+  margin-top: 8px;
   font-size: 16px;
 }
 
@@ -36,13 +47,13 @@ button {
 }
 
 button:hover {
-  background: #125aa0;
+  background: #0d47a1;
 }
 
 .resultado {
   margin-top: 20px;
   padding: 15px;
-  background: #e9f5ff;
+  background: #e3f2fd;
   border-radius: 8px;
   display: none;
 }
@@ -50,58 +61,62 @@ button:hover {
 </head>
 
 <body>
-
 <div class="card">
-  <h2>Buscador de Rotaciones</h2>
+<h2>Buscador de Rotaciones</h2>
 
-  <label>Selecciona tu equipo</label>
-  <select id="equipo">
-    <option value="">-- Selecciona --</option>
-    <option value="Equipo 1">Equipo 5° "J1"</option>
-    <option value="Equipo 2">Equipo 5° "J2"</option>
-    <option value="Equipo 3">Equipo 5° "J3"</option>
-    <option value="Equipo 4">Equipo 5° "J4"</option>
-    <option value="Equipo 5">Equipo 5° "J5"</option>
-    <option value="Equipo 6">Equipo 5° "J6"</option>
-    <option value="Equipo 7">Equipo 5° "J7"</option>
-    <option value="Equipo 8">Equipo 5° "J8"</option>
-    <option value="Equipo 9">Equipo 5° "J9"</option>
-    <option value="Equipo 10">Equipo 5° "J0"</option>
-  </select>
+<label>Equipo</label>
+<select id="equipo">
+  <option value="">-- Selecciona --</option>
+  <option value="Equipo 1">Equipo 5° "J1"</option>
+  <option value="Equipo 2">Equipo 5° "J2"</option>
+  <option value="Equipo 3">Equipo 5° "J3"</option>
+  <option value="Equipo 4">Equipo 5° "J4"</option>
+  <option value="Equipo 5">Equipo 5° "J5"</option>
+  <option value="Equipo 6">Equipo 5° "J6"</option>
+  <option value="Equipo 7">Equipo 5° "J7"</option>
+  <option value="Equipo 8">Equipo 5° "J8"</option>
+  <option value="Equipo 9">Equipo 5° "J9"</option>
+  <option value="Equipo 10">Equipo 5° "J0"</option>
+</select>
 
-  <label>Selecciona la rotación</label>
-  <select id="rotacion">
-    <option value="">-- Selecciona --</option>
-    <option value="1">Rotación 1</option>
-    <option value="2">Rotación 2</option>
-    <option value="3">Rotación 3</option>
-    <option value="4">Rotación 4</option>
-    <option value="5">Rotación 5</option>
-  </select>
+<label>Rotación</label>
+<select id="rotacion">
+  <option value="">-- Selecciona --</option>
+  <option value="1">Rotación 1</option>
+  <option value="2">Rotación 2</option>
+  <option value="3">Rotación 3</option>
+  <option value="4">Rotación 4</option>
+  <option value="5">Rotación 5</option>
+</select>
 
-  <button onclick="buscar()">Buscar</button>
+<label>Código del equipo</label>
+<input type="password" id="codigo" placeholder="Ejemplo: J1">
 
-  <div class="resultado" id="resultado"></div>
+<button onclick="buscar()">Buscar</button>
+
+<div class="resultado" id="resultado"></div>
 </div>
 
 <script>
 const datos = {
   "Equipo 1": {
+    codigo: "J1",
     integrantes: [
       "Zenteno Emiliano",
       "Alvarez Gallegos Samuel",
       "Garcia Lopez Marian"
     ],
     rotaciones: {
-      1:{periodo:"POR DEFINIR",hospital:"POR DEFINIR",doctor:"NO ASIGNADO"},
-      2:{periodo:"POR DEFINIR",hospital:"POR DEFINIR",doctor:"NO ASIGNADO"},
-      3:{periodo:"POR DEFINIR",hospital:"POR DEFINIR",doctor:"NO ASIGNADO"},
-      4:{periodo:"POR DEFINIR",hospital:"POR DEFINIR",doctor:"NO ASIGNADO"},
-      5:{periodo:"POR DEFINIR",hospital:"POR DEFINIR",doctor:"NO ASIGNADO"}
+      1:{periodo:"Por definir",hospital:"Por definir",doctor:"Por definir"},
+      2:{periodo:"Por definir",hospital:"Por definir",doctor:"Por definir"},
+      3:{periodo:"Por definir",hospital:"Por definir",doctor:"Por definir"},
+      4:{periodo:"Por definir",hospital:"Por definir",doctor:"Por definir"},
+      5:{periodo:"Por definir",hospital:"Por definir",doctor:"Por definir"}
     }
   },
 
   "Equipo 2": {
+    codigo: "J2",
     integrantes: [
       "Beltran Barrios Iván Esaú",
       "De La Rosa Campos Jonathan Eduardo",
@@ -111,6 +126,7 @@ const datos = {
   },
 
   "Equipo 3": {
+    codigo: "J3",
     integrantes: [
       "Capula Limones Silvia",
       "De La Torre Muñoz Jimena Guadalupe",
@@ -120,6 +136,7 @@ const datos = {
   },
 
   "Equipo 4": {
+    codigo: "J4",
     integrantes: [
       "Guerrero Reyes Karla Ivonne",
       "Gutiérrez Díaz Manuel De Jesús",
@@ -129,6 +146,7 @@ const datos = {
   },
 
   "Equipo 5": {
+    codigo: "J5",
     integrantes: [
       "Aguilera Huerta Fernanda",
       "Bocanegra Andrade Jorge Antonio Guadalupe",
@@ -138,6 +156,7 @@ const datos = {
   },
 
   "Equipo 6": {
+    codigo: "J6",
     integrantes: [
       "Ibarra Celis Jotselyn Estefania",
       "Jurado Belmontes Eliu Misael"
@@ -146,6 +165,7 @@ const datos = {
   },
 
   "Equipo 7": {
+    codigo: "J7",
     integrantes: [
       "López Cárdenas Antonio",
       "Marquez Reyes Patricia Jaqueline",
@@ -155,6 +175,7 @@ const datos = {
   },
 
   "Equipo 8": {
+    codigo: "J8",
     integrantes: [
       "Rodríguez Casas Gudalupe Citlalic",
       "Rodriguez Goytia Hadassa Madai",
@@ -164,6 +185,7 @@ const datos = {
   },
 
   "Equipo 9": {
+    codigo: "J9",
     integrantes: [
       "Huerta Rodriguez Lizdebeth",
       "Ordaz Loera Victor Eduardo",
@@ -173,6 +195,7 @@ const datos = {
   },
 
   "Equipo 10": {
+    codigo: "J0",
     integrantes: [
       "Ramirez Lara Mario Alberto",
       "Perales Domínguez Lucía Arizbeth",
@@ -185,25 +208,30 @@ const datos = {
 function buscar() {
   const equipo = document.getElementById("equipo").value;
   const rotacion = document.getElementById("rotacion").value;
+  const codigo = document.getElementById("codigo").value;
   const resultado = document.getElementById("resultado");
 
-  if (!equipo || !rotacion) {
-    alert("Selecciona equipo y rotación");
+  if (!equipo || !rotacion || !codigo) {
+    alert("Completa todos los campos");
     return;
   }
 
-  const info = datos[equipo].rotaciones[rotacion];
+  if (codigo !== datos[equipo].codigo) {
+    alert("Código incorrecto");
+    return;
+  }
+
+  const info = datos[equipo].rotaciones[rotacion] || {};
 
   resultado.style.display = "block";
   resultado.innerHTML = `
-    <strong>Periodo:</strong> ${info?.periodo || "Por definir"}<br>
-    <strong>Hospital:</strong> ${info?.hospital || "Por definir"}<br>
-    <strong>Doctor:</strong> ${info?.doctor || "Por definir"}<br><br>
+    <strong>Periodo:</strong> ${info.periodo || "Por definir"}<br>
+    <strong>Hospital:</strong> ${info.hospital || "Por definir"}<br>
+    <strong>Doctor:</strong> ${info.doctor || "Por definir"}<br><br>
     <strong>Integrantes del equipo:</strong><br>
     ${datos[equipo].integrantes.join("<br>")}
   `;
 }
 </script>
-
 </body>
 </html>
