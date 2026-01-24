@@ -1,72 +1,10 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8" />
-<title>Buscador de Rotaciones</title>
-
-<style>
-body {
-  font-family: Arial, sans-serif;
-  background: #f4f6f8;
-  padding: 30px;
-}
-.card {
-  background: white;
-  padding: 20px;
-  max-width: 500px;
-  margin: auto;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-select, button {
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  font-size: 16px;
-}
-.resultado {
-  margin-top: 20px;
-  padding: 15px;
-  background: #e9f5ff;
-  border-radius: 8px;
-  display: none;
-}
-</style>
-</head>
-
-<body>
-<div class="card">
-<h2>Buscador de Rotaciones</h2>
-
-<label>Selecciona tu equipo</label>
-<select id="equipo">
-  <option value="">-- Selecciona --</option>
-  <option value="Equipo 1">Equipo 5° "J1"</option>
-  <option value="Equipo 2">Equipo 5° "J2"</option>
-</select>
-
-<label>Selecciona la rotación</label>
-<select id="rotacion">
-  <option value="">-- Selecciona --</option>
-  <option value="1">Rotación 1</option>
-  <option value="2">Rotación 2</option>
-  <option value="3">Rotación 3</option>
-  <option value="4">Rotación 4</option>
-  <option value="5">Rotación 5</option>
-</select>
-
-<button onclick="buscar()">Buscar</button>
-
-<div class="resultado" id="resultado"></div>
-</div>
-
 <script>
 const datos = {
   "Equipo 1": {
     integrantes: [
-      "Samuel Alvarez Gallegos",
-      "Marian Garcia Lopez",
-      "Emiliano Zenteno"
+      "Zenteno Emiliano",
+      "Alvarez Gallegos Samuel",
+      "Garcia Lopez Marian"
     ],
     rotaciones: {
       1: { periodo: "Enero - Febrero", hospital: "Hospital General", doctor: "Dr. Pérez" },
@@ -75,37 +13,86 @@ const datos = {
       4: { periodo: "Julio - Agosto", hospital: "Hospital Civil", doctor: "Dr. Ramírez" },
       5: { periodo: "Septiembre - Octubre", hospital: "Hospital General", doctor: "Dr. Cruz" }
     }
+  },
+
+  "Equipo 2": {
+    integrantes: [
+      "Beltran Barrios Iván Esaú",
+      "De La Rosa Campos Jonathan Eduardo",
+      "Gurrola Medrano Jesús David"
+    ],
+    rotaciones: {}
+  },
+
+  "Equipo 3": {
+    integrantes: [
+      "Capula Limones Silvia",
+      "De La Torre Muñoz Jimena Guadalupe",
+      "Frausto Ruedas Cynthia Elizabeth"
+    ],
+    rotaciones: {}
+  },
+
+  "Equipo 4": {
+    integrantes: [
+      "Guerrero Reyes Karla Ivonne",
+      "Gutiérrez Díaz Manuel De Jesús",
+      "Gutiérrez Martinez Luis Arturo"
+    ],
+    rotaciones: {}
+  },
+
+  "Equipo 5": {
+    integrantes: [
+      "Aguilera Huerta Fernanda",
+      "Bocanegra Andrade Jorge Antonio Guadalupe",
+      "García Gutiérrez Nadia Citlali"
+    ],
+    rotaciones: {}
+  },
+
+  "Equipo 6": {
+    integrantes: [
+      "Ibarra Celis Jotselyn Estefania",
+      "Jurado Belmontes Eliu Misael"
+    ],
+    rotaciones: {}
+  },
+
+  "Equipo 7": {
+    integrantes: [
+      "López Cárdenas Antonio",
+      "Marquez Reyes Patricia Jaqueline",
+      "Serrano Ramos Victoria"
+    ],
+    rotaciones: {}
+  },
+
+  "Equipo 8": {
+    integrantes: [
+      "Rodríguez Casas Gudalupe Citlalic",
+      "Rodriguez Goytia Hadassa Madai",
+      "Solis Ruvalcaba Hamayri"
+    ],
+    rotaciones: {}
+  },
+
+  "Equipo 9": {
+    integrantes: [
+      "Huerta Rodriguez Lizdebeth",
+      "Ordaz Loera Victor Eduardo",
+      "Piña Bañales Jesús Gaeel"
+    ],
+    rotaciones: {}
+  },
+
+  "Equipo 10": {
+    integrantes: [
+      "Ramirez Lara Mario Alberto",
+      "Perales Domínguez Lucía Arizbeth",
+      "Torres Alaniz Sebastian Alejandro"
+    ],
+    rotaciones: {}
   }
 };
-
-function buscar() {
-  const equipo = document.getElementById("equipo").value;
-  const rotacion = document.getElementById("rotacion").value;
-  const resultado = document.getElementById("resultado");
-
-  if (!equipo || !rotacion) {
-    alert("Selecciona equipo y rotación");
-    return;
-  }
-
-  if (!datos[equipo]) {
-    resultado.style.display = "block";
-    resultado.innerHTML = "Este equipo aún no tiene información cargada.";
-    return;
-  }
-
-  const info = datos[equipo].rotaciones[rotacion];
-
-  resultado.style.display = "block";
-  resultado.innerHTML = `
-    <strong>Periodo:</strong> ${info.periodo}<br>
-    <strong>Hospital:</strong> ${info.hospital}<br>
-    <strong>Médico:</strong> ${info.doctor}<br><br>
-    <strong>Integrantes:</strong><br>
-    ${datos[equipo].integrantes.join("<br>")}
-  `;
-}
 </script>
-
-</body>
-</html>
