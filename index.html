@@ -77,15 +77,45 @@ const datos = {
     integrantes: [
       "Samuel Alvarez Gallegos",
       "Marian Garcia Lopez",
-      "Emiliano Zenteno",
+      "Emiliano Zenteno"
     ],
     rotaciones: {
       1: { periodo: "Por definir", hospital: "No asignado", doctor: "No asignado" },
       2: { periodo: "Por definir", hospital: "No asignado", doctor: "No asignado" },
       3: { periodo: "Por definir", hospital: "No asignado", doctor: "No asignado" },
       4: { periodo: "Por definir", hospital: "No asignado", doctor: "No asignado" },
-      5: { periodo: "Por definir", hospital: "No asignado", doctor: "No asignado" },
+      5: { periodo: "Por definir", hospital: "No asignado", doctor: "No asignado" }
     }
   }
 };
+
+function buscar() {
+  const equipo = document.getElementById("equipo").value;
+  const rotacion = document.getElementById("rotacion").value;
+  const resultado = document.getElementById("resultado");
+
+  if (!equipo || !rotacion) {
+    alert("Selecciona equipo y rotación");
+    return;
+  }
+
+  const info = datos[equipo]?.rotaciones[rotacion];
+
+  if (!info) {
+    resultado.style.display = "block";
+    resultado.innerHTML = "No hay información disponible.";
+    return;
+  }
+
+  resultado.style.display = "block";
+  resultado.innerHTML = `
+    <strong>Periodo:</strong> ${info.periodo}<br>
+    <strong>Hospital:</strong> ${info.hospital}<br>
+    <strong>Médico:</strong> ${info.doctor}<br><br>
+    <strong>Integrantes del equipo:</strong><br>
+    ${datos[equipo].integrantes.join("<br>")}
+  `;
+}
 </script>
+</body>
+</html>
