@@ -29,9 +29,9 @@ body {
 
 .header img {
   width: 100%;
-  max-width: 420px;
+  max-width: 380px;
   height: auto;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 .header h1 {
@@ -87,9 +87,7 @@ button:hover {
 <div class="card">
 
   <div class="header">
-    <!-- CAMBIA logo.png POR EL NOMBRE DE TU IMAGEN -->
     <img src="logo.png" alt="Logo">
-
     <h1>ROTACIONES 5° "J"</h1>
     <h2>SEMESTRE ENERO – JULIO 2026</h2>
   </div>
@@ -107,6 +105,7 @@ button:hover {
     <option value="Equipo 8">Equipo 5° "J8"</option>
     <option value="Equipo 9">Equipo 5° "J9"</option>
     <option value="Equipo 10">Equipo 5° "J0"</option>
+    <option value="Equipo 11">Equipo 5° "0J"</option>
   </select>
 
   <label>Selecciona la rotación</label>
@@ -126,102 +125,130 @@ button:hover {
 </div>
 
 <script>
+
 const datos = {
+
   "Equipo 1": {
-    integrantes: [
-      "Garcia Lopez Marian",
-      "Solis Ruvalcaba Hamayri",
-      "Zenteno Emiliano"
-    ],
-    rotaciones: {
-      1:{periodo:"Por definir",hospital:"Por definir",doctor:"Por definir"},
-      2:{periodo:"Por definir",hospital:"Por definir",doctor:"Por definir"},
-      3:{periodo:"Por definir",hospital:"Por definir",doctor:"Por definir"},
-      4:{periodo:"Por definir",hospital:"Por definir",doctor:"Por definir"},
-      5:{periodo:"Por definir",hospital:"Por definir",doctor:"Por definir"}
+    integrantes:["Garcia Lopez Marian","Solis Ruvalcaba Hamayri","Zenteno Emiliano"],
+    rotaciones:{
+      1:{periodo:"02 de febrero – 15 de febrero",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      2:{periodo:"16 de febrero – 08 de marzo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      3:{periodo:"09 de marzo – 29 de marzo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      4:{periodo:"13 de abril – 03 de mayo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      5:{periodo:"04 de mayo – 24 de mayo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"}
     }
   },
 
   "Equipo 2": {
-    integrantes: [
-      "Beltran Barrios Ivan Esau",
-      "De la Rosa Campos Jonathan Eduardo",
-      "Gurrola Medrano Jesus David"
-    ],
-    rotaciones: {}
+    integrantes:["Beltran Barrios Ivan Esau","De la Rosa Campos Jonathan Eduardo","Gurrola Medrano Jesus David"],
+    rotaciones:{
+      1:{periodo:"02 de febrero – 15 de febrero",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      2:{periodo:"16 de febrero – 08 de marzo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      3:{periodo:"09 de marzo – 29 de marzo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      4:{periodo:"13 de abril – 03 de mayo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      5:{periodo:"04 de mayo – 24 de mayo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"}
+    }
   },
 
   "Equipo 3": {
-    integrantes: [
-      "Ibarra Celis Jotselyn Estefania",
-      "Jurado Belmontes Eliu Misael",
-      "Rodriguez Goytia Hadassa Madai"
-    ],
-    rotaciones: {}
+    integrantes:["Ibarra Celis Jotselyn Estefania","Jurado Belmontes Eliu Misael","Rodriguez Goytia Hadassa Madai"],
+    rotaciones:{
+      1:{periodo:"02 de febrero – 15 de febrero",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      2:{periodo:"16 de febrero – 08 de marzo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      3:{periodo:"09 de marzo – 29 de marzo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      4:{periodo:"13 de abril – 03 de mayo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      5:{periodo:"04 de mayo – 24 de mayo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"}
+    }
   },
 
   "Equipo 4": {
-    integrantes: [
-      "Bocanegra Andrade Jorge Antonio Guadalupe",
-      "Ramirez Lara Mario Alberto",
-      "Serrano Ramos Victoria Mireya"
-    ],
-    rotaciones: {}
+    integrantes:["Bocanegra Andrade Jorge Antonio Guadalupe","Ramirez Lara Mario Alberto","Serrano Ramos Victoria Mireya"],
+    rotaciones:{
+      1:{periodo:"02 de febrero – 15 de febrero",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      2:{periodo:"16 de febrero – 08 de marzo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      3:{periodo:"09 de marzo – 29 de marzo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      4:{periodo:"13 de abril – 03 de mayo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      5:{periodo:"04 de mayo – 24 de mayo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"}
+    }
   },
 
   "Equipo 5": {
-    integrantes: [
-      "Alvarez Gallegos Samuel",
-      "Lopez Cardenas Antonio",
-      "Marquez Reyes Patricia Jaqueline"
-    ],
-    rotaciones: {}
+    integrantes:["Alvarez Gallegos Samuel","Lopez Cardenas Antonio","Marquez Reyes Patricia Jaqueline"],
+    rotaciones:{
+      1:{periodo:"02 de febrero – 15 de febrero",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      2:{periodo:"16 de febrero – 08 de marzo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      3:{periodo:"09 de marzo – 29 de marzo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      4:{periodo:"13 de abril – 03 de mayo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      5:{periodo:"04 de mayo – 24 de mayo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"}
+    }
   },
 
   "Equipo 6": {
-    integrantes: [
-      "Frausto Ruedas Cynthia Elizabeth",
-      "Huerta Rodriguez Lizdebeth",
-      "Ordaz Loera Victor Eduardo"
-    ],
-    rotaciones: {}
+    integrantes:["Frausto Ruedas Cynthia Elizabeth","Huerta Rodriguez Lizdebeth","Ordaz Loera Victor Eduardo"],
+    rotaciones:{
+      1:{periodo:"02 de febrero – 15 de febrero",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      2:{periodo:"16 de febrero – 08 de marzo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      3:{periodo:"09 de marzo – 29 de marzo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      4:{periodo:"13 de abril – 03 de mayo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      5:{periodo:"04 de mayo – 24 de mayo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"}
+    }
   },
 
   "Equipo 7": {
-    integrantes: [
-      "Guerrero Reyes Karla Ivonne",
-      "Gutierrez Diaz Manuel de Jesus",
-      "POR DEFINIR"
-    ],
-    rotaciones: {}
+    integrantes:["Guerrero Reyes Karla Ivonne","Gutierrez Diaz Manuel de Jesus","POR DEFINIR"],
+    rotaciones:{
+      1:{periodo:"02 de febrero – 15 de febrero",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      2:{periodo:"16 de febrero – 08 de marzo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      3:{periodo:"09 de marzo – 29 de marzo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      4:{periodo:"13 de abril – 03 de mayo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      5:{periodo:"04 de mayo – 24 de mayo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"}
+    }
   },
 
   "Equipo 8": {
-    integrantes: [
-      "Capula Limones Silvia",
-      "Perales Dominguez Lucia Arizbeth",
-      "Torrez Alaniz Sebastian Alejandro"
-    ],
-    rotaciones: {}
+    integrantes:["Capula Limones Silvia","Perales Dominguez Lucia Arizbeth","Torrez Alaniz Sebastian Alejandro"],
+    rotaciones:{
+      1:{periodo:"02 de febrero – 15 de febrero",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      2:{periodo:"16 de febrero – 08 de marzo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      3:{periodo:"09 de marzo – 29 de marzo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      4:{periodo:"13 de abril – 03 de mayo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      5:{periodo:"04 de mayo – 24 de mayo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"}
+    }
   },
 
   "Equipo 9": {
-    integrantes: [
-      "De la Torre Muñoz Jimena Guadalupe,
-      "Gutierrez Martinez Luis Arturo",
-      "Piña Bañales Jesus Gael"
-    ],
-    rotaciones: {}
+    integrantes:["De la Torre Muñoz Jimena Guadalupe","Gutierrez Martinez Luis Arturo","Piña Bañales Jesus Gael"],
+    rotaciones:{
+      1:{periodo:"02 de febrero – 15 de febrero",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      2:{periodo:"16 de febrero – 08 de marzo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      3:{periodo:"09 de marzo – 29 de marzo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      4:{periodo:"13 de abril – 03 de mayo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      5:{periodo:"04 de mayo – 24 de mayo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"}
+    }
   },
 
   "Equipo 10": {
-    integrantes: [
-      "Aguilera Huerta Fernanda",
-      "Garcia Gutierrez Nadia Citlic",
-      "POR DEFINIR"
-    ],
-    rotaciones: {}
+    integrantes:["Aguilera Huerta Fernanda","Garcia Gutierrez Nadia Citlic","POR DEFINIR"],
+    rotaciones:{
+      1:{periodo:"02 de febrero – 15 de febrero",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      2:{periodo:"16 de febrero – 08 de marzo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      3:{periodo:"09 de marzo – 29 de marzo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      4:{periodo:"13 de abril – 03 de mayo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      5:{periodo:"04 de mayo – 24 de mayo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"}
+    }
+  },
+
+  "Equipo 11": {
+    integrantes:["Alumno 1","Alumno 2"],
+    rotaciones:{
+      1:{periodo:"02 de febrero – 15 de febrero",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      2:{periodo:"16 de febrero – 08 de marzo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      3:{periodo:"09 de marzo – 29 de marzo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      4:{periodo:"13 de abril – 03 de mayo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"},
+      5:{periodo:"04 de mayo – 24 de mayo",hospital:"Por definir",doctor:"Por definir",especialidad:"Por definir"}
+    }
   }
+
 };
 
 function buscar() {
@@ -234,17 +261,19 @@ function buscar() {
     return;
   }
 
-  const info = datos[equipo].rotaciones[rotacion] || {};
+  const info = datos[equipo].rotaciones[rotacion];
 
   resultado.style.display = "block";
   resultado.innerHTML = `
-    <strong>Periodo:</strong> ${info.periodo || "Por definir"}<br>
-    <strong>Hospital:</strong> ${info.hospital || "Por definir"}<br>
-    <strong>Doctor:</strong> ${info.doctor || "Por definir"}<br><br>
+    <strong>Periodo:</strong> ${info.periodo}<br>
+    <strong>Hospital:</strong> ${info.hospital}<br>
+    <strong>Doctor:</strong> ${info.doctor}<br>
+    <strong>Especialidad:</strong> ${info.especialidad}<br><br>
     <strong>Integrantes del equipo:</strong><br>
     ${datos[equipo].integrantes.join("<br>")}
   `;
 }
+
 </script>
 
 </body>
