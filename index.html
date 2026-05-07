@@ -378,5 +378,14 @@ function buscar() {
 
 </script>
 
+  document.addEventListener("DOMContentLoaded", function () {
+  const btn = document.querySelector("#popupAviso button");
+
+  if (btn) {
+    btn.addEventListener("click", function () {
+      document.getElementById("popupAviso").style.display = "none";
+    });
+  }
+});
 </body>
 </html>
