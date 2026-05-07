@@ -131,46 +131,30 @@ button:hover {
 }
 
 @keyframes aparecer{
-  from{
-    transform: scale(0.8);
-    opacity: 0;
-  }
-  to{
-    transform: scale(1);
-    opacity: 1;
-  }
+  from{transform: scale(0.8); opacity: 0;}
+  to{transform: scale(1); opacity: 1;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- AVISO EMERGENTE -->
+<!-- POPUP -->
 <div id="popupAviso" class="popup">
   <div class="popup-contenido">
 
     <h2>⚠️ AVISO IMPORTANTE</h2>
 
-    <p>
-      ESTÁS POR INICIAR TU ÚLTIMA ROTACIÓN DEL
-      SEMESTRE ENERO - JULIO 2026.
-    </p>
+    <p>ESTÁS POR INICIAR TU ÚLTIMA ROTACIÓN DEL SEMESTRE ENERO - JULIO 2026.</p>
 
-    <p>
-      RECUERDA QUE DEBES DE TENER LAS CALIFICACIONES
-   COMPLETAS HASTA LA CUARTA ROTACIÓN. SI NO CUENTAS CON ELLAS COMPLETA A LA BREVEDAD
-    </p>
+    <p>RECUERDA QUE DEBES TENER LAS CALIFICACIONES COMPLETAS HASTA LA CUARTA ROTACIÓN.</p>
 
-    <p>
-      LA FECHA DE ENTREGA DE HOJA DEL ALUMNO
-      ES DEL 25 AL 29 DE MAYO.
-    </p>
+    <p>LA FECHA DE ENTREGA DE HOJA DEL ALUMNO ES DEL 25 AL 29 DE MAYO.</p>
 
     <button onclick="cerrarAviso()">ACEPTAR</button>
 
   </div>
 </div>
-
 <div class="card">
 
   <div class="header">
@@ -225,17 +209,13 @@ const datos = {
   "Equipo 1": {
     integrantes:["Garcia Lopez Marian","Solis Ruvalcaba Hamayri","Zenteno Emiliano"],
     rotaciones:{
-      1:{
-        periodo:"02 de febrero – 15 de febrero",
-        diaTurno:"DOMINGO - JORNADA ACUMULADA",
-        hospital:"HOSPITAL GENERAL DE FRESNILLO",
-        doctor:"ORTEGA ESPINO PASCUAL",
-        especialidad:"GENERAL"
-      }
+            1:{periodo:"02 de febrero – 15 de febrero",diaTurno:"DOMINGO - JORNADA ACUMULADA",hospital:"HOSPITAL GENERAL DE FRESNILLO",doctor:"ORTEGA ESPINO PASCUAL",especialidad:"GENERAL"},
+      2:{periodo:"16 de febrero – 08 de marzo",diaTurno:"JUEVES - TURNO NOCTURNO",hospital:"HOSPITAL GENERAL DE FRESNILLO",doctor:"DIAZ FLORES GERARDO ANTONIO",especialidad:"URGENCIAS"},
+      3:{periodo:"09 de marzo – 29 de marzo",diaTurno:"JUEVES Y VIERNES - TURNO MATUTINO",hospital:"HOSPITAL GENERAL DE FRESNILLO",doctor:"SANCHEZ ORTEGA LEOPOLDO",especialidad:"NUTRICION"},
+      4:{periodo:"13 de abril – 03 de mayo",diaTurno:"JUEVES Y VIERNES - TURNO MATUTINO",hospital:"HOSPITAL GENERAL DE FRESNILLO",doctor:"ACOSTA GARDUÑO GIULIANA",especialidad:"URGENCIAS"},
+      5:{periodo:"04 de mayo – 24 de mayo",diaTurno:"JUEVES - TURNO NOCTURNO",hospital:"IMSS",doctor:"HERNANDEZ HERRERA HECTOR",especialidad:"URGENCIAS"}
     }
-  }
-
-};
+  },
 
     "Equipo 2": {
     integrantes:["Beltran Barrios Ivan Esau","De la Rosa Campos Jonathan Eduardo","Gurrola Medrano Jesus David"],
