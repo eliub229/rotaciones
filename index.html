@@ -79,12 +79,73 @@ button:hover {
   border-radius: 8px;
   display: none;
 }
+
+/* POPUP */
+
+.popup{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.popup-contenido{
+  background: white;
+  width: 90%;
+  max-width: 500px;
+  padding: 25px;
+  border-radius: 15px;
+  text-align: center;
+  animation: aparecer 0.3s ease;
+}
+
+.popup-contenido h2{
+  color: #d32f2f;
+  margin-bottom: 15px;
+}
+
+.popup-contenido p{
+  font-size: 16px;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.popup-contenido button{
+  background: #1976d2;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.popup-contenido button:hover{
+  background: #0d47a1;
+}
+
+@keyframes aparecer{
+  from{
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to{
+    transform: scale(1);
+    opacity: 1;
+  }
+}
 </style>
 </head>
 
 <body>
 
-  <!-- AVISO EMERGENTE -->
+<!-- AVISO EMERGENTE -->
 <div id="popupAviso" class="popup">
   <div class="popup-contenido">
 
@@ -109,15 +170,18 @@ button:hover {
 
   </div>
 </div>
+
 <div class="card">
 
   <div class="header">
     <img src="logo.png" alt="Logo">
+
     <h1>ROTACIONES 5° "J"</h1>
     <h2>SEMESTRE ENERO – JULIO 2026</h2>
   </div>
 
   <label>Selecciona tu equipo</label>
+
   <select id="equipo">
     <option value="">-- Selecciona --</option>
     <option value="Equipo 1">Equipo 5° "J1"</option>
@@ -134,6 +198,7 @@ button:hover {
   </select>
 
   <label>Selecciona la rotación</label>
+
   <select id="rotacion">
     <option value="">-- Selecciona --</option>
     <option value="1">Rotación 1</option>
@@ -151,132 +216,29 @@ button:hover {
 
 <script>
 
+function cerrarAviso(){
+  document.getElementById("popupAviso").style.display = "none";
+}
+
 const datos = {
 
   "Equipo 1": {
     integrantes:["Garcia Lopez Marian","Solis Ruvalcaba Hamayri","Zenteno Emiliano"],
     rotaciones:{
-      1:{periodo:"02 de febrero – 15 de febrero",diaTurno:"DOMINGO - JORNADA ACUMULADA",hospital:"HOSPITAL GENERAL DE FRESNILLO",doctor:"ORTEGA ESPINO PASCUAL",especialidad:"GENERAL"},
-      2:{periodo:"16 de febrero – 08 de marzo",diaTurno:"JUEVES - TURNO NOCTURNO",hospital:"HOSPITAL GENERAL DE FRESNILLO",doctor:"DIAZ FLORES GERARDO ANTONIO",especialidad:"URGENCIAS"},
-      3:{periodo:"09 de marzo – 29 de marzo",diaTurno:"JUEVES Y VIERNES - TURNO MATUTINO",hospital:"HOSPITAL GENERAL DE FRESNILLO",doctor:"SANCHEZ ORTEGA LEOPOLDO",especialidad:"NUTRICION"},
-      4:{periodo:"13 de abril – 03 de mayo",diaTurno:"JUEVES Y VIERNES - TURNO MATUTINO",hospital:"HOSPITAL GENERAL DE FRESNILLO",doctor:"ACOSTA GARDUÑO GIULIANA",especialidad:"URGENCIAS"},
-      5:{periodo:"04 de mayo – 24 de mayo",diaTurno:"JUEVES - TURNO NOCTURNO",hospital:"IMSS",doctor:"HERNANDEZ HERRERA HECTOR",especialidad:"URGENCIAS"}
-    }
-  },
-
-  "Equipo 2": {
-    integrantes:["Beltran Barrios Ivan Esau","De la Rosa Campos Jonathan Eduardo","Gurrola Medrano Jesus David"],
-    rotaciones:{
-      1:{periodo:"02 de febrero – 15 de febrero",diaTurno:"DOMINGO - JORNADA ACUMULADA",hospital:"HOSPITAL GENERAL DE FRESNILLO",doctor:"HERNADE HERRERA HECTOR",especialidad:"URGENCIAS"},
-      2:{periodo:"16 de febrero – 08 de marzo",diaTurno:"DOMINGO - JORNADA ACUMULADA",hospital:"HOSPITAL GENERAL DE FRESNILLO",doctor:"ORTEGA ESPINO PASCUAL",especialidad:"URGENCIAS"},
-      3:{periodo:"09 de marzo – 29 de marzo",diaTurno:"JUEVES - TURNO NOCTURNO",hospital:"HOSPITAL GENERAL DE FRESNILLO",doctor:"DIAZ FLORES GERARDO ANTONIO",especialidad:"URGENCIAS"},
-      4:{periodo:"13 de abril – 03 de mayo",diaTurno:"JUEVES Y VIERNES - TURNO MATUTINO",hospital:"HOSPITAL GENERAL DE FRESNILLO",doctor:"SANCHEZ ORTEGA LEOPOLDO",especialidad:"NUTRICION"},
-      5:{periodo:"04 de mayo – 24 de mayo",diaTurno:"JUEVES Y VIERNES - TURNO MATUTINO",hospital:"IMSS",doctor:"UREÑO SEGURA MISAEL",especialidad:"HEMATOLOGIA"}
-    }
-  },
-
-  "Equipo 3": {
-    integrantes:["Ibarra Celis Jotselyn Estefania","Jurado Belmontes Eliu Misael","Rodriguez Goytia Hadassa Madai"],
-    rotaciones:{
-      1:{periodo:"02 de febrero – 15 de febrero",diaTurno:"JUEVES - VIERNES TURNO MATUTINO",hospital:"HOSPITAL GENERAL DE FRESNILLO",doctor:"ACOSTA GARDUÑO GIULIANA",especialidad:"URGENCIAS"},
-      2:{periodo:"16 de febrero – 08 de marzo",diaTurno:"DOMINGO - JORNADA ACUMULADA",hospital:"HOSPITAL GENERAL DE FRESNILLO",doctor:"HERNANDEZ HERRERA HECTOR",especialidad:"URGENCIAS"},
-      3:{periodo:"09 de marzo – 29 de marzo",diaTurno:"DOMINGO - JORNADA ACUMULADA",hospital:"HOSPITAL GENERAL DE FRESNILLO",doctor:"ORTEGA ESPINO PASCUAL",especialidad:"GENERAL"},
-      4:{periodo:"13 de abril – 03 de mayo",diaTurno:"JUEVES - TURNO NOCTURNO",hospital:"HOSPITAL GENERAL DE FRESNILLO",doctor:"DIAZ FLORES GERARDO ANTONIO",especialidad:"URGENCIOAS"},
-      5:{periodo:"04 de mayo – 24 de mayo",diaTurno:"DOMINGO - JORNADA ACUMULADA",hospital:"HOSPITAL GENERAL DE FRESNILLO",doctor:"ORTIZ BAÑUELOS JESUS",especialidad:"GENERAL"}
-    }
-  },
-
-  "Equipo 4": {
-    integrantes:["Bocanegra Andrade Jorge Antonio Guadalupe","Ramirez Lara Mario Alberto","Serrano Ramos Victoria Mireya"],
-    rotaciones:{
-      1:{periodo:"02 de febrero – 15 de febrero",diaTurno:"JUEVES - VIERNES TURNO MATUTINO",hospital:"HOSPITAL GENERAL DE FRESNILLO",doctor:"SANCHEZ ORTEGA LEOPOLDO",especialidad:"NUTRICION"},
-      2:{periodo:"16 de febrero – 08 de marzo",diaTurno:"JUEVES - VIERNES TURNO MATUTINO",hospital:"HOSPITAL GENERAL DE FRESNILLO",doctor:"ACOSTA GARDUÑO GIULIANA",especialidad:"URGENCIAS"},
-      3:{periodo:"09 de marzo – 29 de marzo",diaTurno:"DOMINGO - JORNADA ACUMULADA",hospital:"HOSPITAL GENERAL DE FRESNILLO",doctor:"HERNANDEZ HERRERA HECTOR",especialidad:"URGENCIAS"},
-      4:{periodo:"13 de abril – 03 de mayo",diaTurno:"DOMINGO - JORNADA ACUMULADA",hospital:"HOSPITAL GENERAL DE FRESNILLO",doctor:"ORTEGA ESPINO PASCUAL",especialidad:"GENERAL"},
-      5:{periodo:"04 de mayo – 24 de mayo",diaTurno:"DOMINGO - JORNADA ACUMULADA",hospital:"HOSPITAL GENERAL DE FRESNILLO",doctor:"SANCHEZ VAZQUEZ HECTOR SAUL",especialidad:"URGENCIAS"}
-    }
-  },
-
-  "Equipo 5": {
-    integrantes:["Alvarez Gallegos Samuel","Lopez Cardenas Antonio","Marquez Reyes Patricia Jaqueline"],
-    rotaciones:{
-      1:{periodo:"02 de febrero – 15 de febrero",diaTurno:"JUEVES - TURNO NOCTURNO",hospital:"HOSPITAL GENERAL DE FRESNILLO",doctor:"DIAZ FLORES GERARDO ANTONIO",especialidad:"URGENCIAS"},
-      2:{periodo:"16 de febrero – 08 de marzo",diaTurno:"JUEVES - VIERNES TURNO MATUTINO",hospital:"HOSPITAL GENERAL DE FRESNILLO",doctor:"SANCHEZ ORTEGA LEOPOLDO",especialidad:"NUTRICION"},
-      3:{periodo:"09 de marzo – 29 de marzo",diaTurno:"JUEVES - VIERNES TURNO MATUTINO",hospital:"HOSPITAL GENERAL DE FRESNILLO",doctor:"ACOSTA GARDUÑO GIULIANA",especialidad:"URGENCIAS"},
-      4:{periodo:"13 de abril – 03 de mayo",diaTurno:"DOMINGO - JORNADA ACUMULADA",hospital:"HOSPITAL GENERAL DE FRESNILLO",doctor:"HERNANDEZ HERRERA HECTOR",especialidad:"URGENCIAS"},
-      5:{periodo:"04 de mayo – 24 de mayo",diaTurno:"DOMINGO - JORNADA ACUMULADA",hospital:"HOSPITAL GENERAL DE FRESNILLO",doctor:"ORTEGA ESPINO PASCUAL",especialidad:"GENERAL"}
-    }
-  },
-
-  "Equipo 6": {
-    integrantes:["Frausto Ruedas Cynthia Elizabeth","Huerta Rodriguez Lizdebeth","Ordaz Loera Victor Eduardo"],
-    rotaciones:{
-      1:{periodo:"02 de febrero – 15 de febrero",diaTurno:"DOMINGO - JORNADA ACUMULADA",hospital:"HOSPITAL GENERAL DE FRESNILLO",doctor:"ALCALA GALLEGS JUAN CARLOS",especialidad:"GENERAL"},
-      2:{periodo:"16 de febrero – 08 de marzo",diaTurno:"JUEVES - VIERNES TURNO MATUTINO",hospital:"ISSSTE",doctor:"BERNAL OROZCO ANA LILIA",especialidad:"GENERAL"},
-      3:{periodo:"09 de marzo – 29 de marzo",diaTurno:"DOMINGO - JORNADA ACUMULADA",hospital:"IMSS",doctor:"SANCHEZ VAZQUEZ HECTOR SAUL",especialidad:"URGENCIAS"},
-      4:{periodo:"13 de abril – 03 de mayo",diaTurno:"DOMINGO - JORNADA ACUMULADA",hospital:"HOSPITAL GENERAL DE FRESNILLO",doctor:"ORTIZ BAÑUELOS JESUS",especialidad:"GENERAL"},
-      5:{periodo:"04 de mayo – 24 de mayo",diaTurno:"DOMINGO - JORNADA ACUMULADA",hospital:"HOSPITAL GENERAL DE FRESNILLO",doctor:"HERNANDEZ HERRERA HECTOR",especialidad:"URGENCIAS"}
-    }
-  },
-
-  "Equipo 7": {
-    integrantes:["Guerrero Reyes Karla Ivonne","Gutierrez Diaz Manuel de Jesus"],
-    rotaciones:{
-      1:{periodo:"02 de febrero – 15 de febrero",diaTurno:"JUEVES - TURNO NOCTURNO",hospital:"IMSS",doctor:"HERNANDEZ HERRERA HECTOR",especialidad:"URGENCIAS"},
-      2:{periodo:"16 de febrero – 08 de marzo",diaTurno:"DOMINGO - JORNADA ACUMULADA",hospital:"HOSPITAL GENERAL DE FRESNILLO",doctor:"ALCALA GALLEGOS JUAN CARLOS",especialidad:"GENERAL"},
-      3:{periodo:"09 de marzo – 29 de marzo",diaTurno:"JUEVES - VIERNES TURNO MATUTINO",hospital:"ISSSTE",doctor:"BERNAL OROZCO ANA LILIA",especialidad:"GENERAL"},
-      4:{periodo:"13 de abril – 03 de mayo",diaTurno:"DOMINGO - JORNADA ACUMULADA",hospital:"IMSS",doctor:"SANCHEZ VAZQUEZ HECTOR SAUL",especialidad:"URGENCIAS"},
-      5:{periodo:"04 de mayo – 24 de mayo",diaTurno:"JUEVES - VIERNES TURNO MATUTINO",hospital:"HOSPITAL GENERAL DE FRESNILLO",doctor:"ACOSTA GARDUÑO GIULIANA",especialidad:"URGENCIAS"}
-    }
-  },
-
-  "Equipo 8": {
-    integrantes:["Capula Limones Silvia","Perales Dominguez Lucia Arizbeth","Torrez Alaniz Sebastian Alejandro"],
-    rotaciones:{
-      1:{periodo:"02 de febrero – 15 de febrero",diaTurno:"JUEVES VIERNES - TURNO MATUTINO",hospital:"IMSS",doctor:"UREÑO SEGURA MISAEL",especialidad:"HEMATOLOGIA"},
-      2:{periodo:"16 de febrero – 08 de marzo",diaTurno:"JUEVES - TURNO NOCTURNO",hospital:"IMSS",doctor:"HERNANDEZ HERRERA HECTOR",especialidad:"URGENCIAS"},
-      3:{periodo:"09 de marzo – 29 de marzo",diaTurno:"JUEVES VIERNES - TURNO VESPERTINO",hospital:"HOSPITAL GENERAL DE FRESNILLO",doctor:"FRAGA CERRILLO FRIDA EDILIA",especialidad:"GENERAL"},
-      4:{periodo:"13 de abril – 03 de mayo",diaTurno:"JUEVES - VIERNES TURNO MATUTINO",hospital:"ISSSTE",doctor:"BERNAL OROZCO ANA LILIA",especialidad:"GENERAL"},
-      5:{periodo:"04 de mayo – 24 de mayo",diaTurno:"JUEVES - VIERNES TURNO MATUTINO",hospital:"HOSPITAL GENERAL DE FRESNILLO",doctor:"SANCHEZ ORTEGA LEOPOLDO",especialidad:"NUTRICION"}
-    }
-  },
-
-  "Equipo 9": {
-    integrantes:["De la Torre Muñoz Jimena Guadalupe","Gutierrez Martinez Luis Arturo","Piña Bañales Jesus Gael"],
-    rotaciones:{
-      1:{periodo:"02 de febrero – 15 de febrero",diaTurno:"DOMINGO - JORNADA ACUMULADA",hospital:"HOSPITAL GENERAL DE FRESNILLO",doctor:"ORTIZ BAÑUELOS JESUS",especialidad:"GENERAL"},
-      2:{periodo:"16 de febrero – 08 de marzo",diaTurno:"JUEVES - VIERNES TURNO MATUTINO",hospital:"IMSS",doctor:"UREÑO SEGURA MISAEL",especialidad:"HEMATOLOGIA"},
-      3:{periodo:"09 de marzo – 29 de marzo",diaTurno:"JUEVES - TURNO NOCTURNO",hospital:"IMSS",doctor:"HERNANDEZ HERRERA HECTOR",especialidad:"URGENCIAS"},
-      4:{periodo:"13 de abril – 03 de mayo",diaTurno:"JUEVES Y VIERNES- TURNO VESPERTINO",hospital:"HOSPITAL GENERAL DE FRESNILLO",doctor:"FRAGA CERRILLO FRIDA EDILIA",especialidad:"GENERAL"},
-      5:{periodo:"04 de mayo – 24 de mayo",diaTurno:"JUEVES - VIERNES TURNO MATUTINO",hospital:"ISSSTE",doctor:"BERNAL OROZCO ANA LILIA",especialidad:"GENERAL"}
-    }
-  },
-
-  "Equipo 10": {
-    integrantes:["Aguilera Huerta Fernanda","Garcia Gutierrez Nadia Citlali"],
-    rotaciones:{
-      1:{periodo:"02 de febrero – 15 de febrero",diaTurno:"DOMINGO - JORNADA ACUMULADA",hospital:"IMSS",doctor:"SANCHEZ VAZQUEZ HECTOR SAUL",especialidad:"URGENCIAS"},
-      2:{periodo:"16 de febrero – 08 de marzo",diaTurno:"DOMINGO -JORNADA ACUMULADA",hospital:"HOSPITAL GENERAL DE FRESNILLO",doctor:"ORTIZ BAÑUELOS JESUS",especialidad:"GENERAL"},
-      3:{periodo:"09 de marzo – 29 de marzo",diaTurno:"JUEVES - VIERNES TURNO MATUTINO",hospital:"IMSS",doctor:"UREÑO SEGURA MISAEL",especialidad:"HEMATOLOGIA"},
-      4:{periodo:"13 de abril – 03 de mayo",diaTurno:"JUEVES - TURNO NOCTURNO",hospital:"IMSS",doctor:"HERNANDEZ HERRERA HECTOR",especialidad:"URGENCIAS"},
-      5:{periodo:"04 de mayo – 24 de mayo",diaTurno:"JUEVES Y VIERNES TURNO VESPERTINO",hospital:"HOSPITAL GENERAL DE FRESNILLO",doctor:"FRAGA CERRILLO FRIDA EDILIA",especialidad:"GENERAL"}
-    }
-  },
-
-  "Equipo 11": {
-    integrantes:["Castillo Escobedo Victor Juan","Rodriguez Casas Guadalupe Citlalic"],
-    rotaciones:{
-      1:{periodo:"02 de febrero – 15 de febrero",diaTurno:"JUEVES Y VIERNES - TURNO MATUTINO",hospital:"ISSSTE",doctor:"BERNAL OROZCO ANA LILIA",especialidad:"GENERAL"},
-      2:{periodo:"16 de febrero – 08 de marzo",diaTurno:"DOMINGO - JORNADA ACUMULADA",hospital:"IMSS",doctor:"SANCHEZ VAZQUEZ HECTOR SAUL",especialidad:"URGENCIAS"},
-      3:{periodo:"09 de marzo – 29 de marzo",diaTurno:"DOMINGO - JORNADA ACUMULADA",hospital:"HOSPITAL GENERAL DE FRESNILLO",doctor:"ORTIZ BAÑUELOS JESUS",especialidad:"GENERAL"},
-      4:{periodo:"13 de abril – 03 de mayo",diaTurno:"JUEVES - VIERNES TURNO MATUTINO",hospital:"IMSS",doctor:"UREÑO SEGURA MISAEL",especialidad:"HEMATOLOGIA"},
-      5:{periodo:"04 de mayo – 24 de mayo",diaTurno:"JUEVES - TURNO NOCTURNO",hospital:"HOSPITAL GENERAL DE FRESNILLO",doctor:"DIAZ FLORES GERARDO ANTONIO",especialidad:"URGENCIAS"}
+      1:{
+        periodo:"02 de febrero – 15 de febrero",
+        diaTurno:"DOMINGO - JORNADA ACUMULADA",
+        hospital:"HOSPITAL GENERAL DE FRESNILLO",
+        doctor:"ORTEGA ESPINO PASCUAL",
+        especialidad:"GENERAL"
+      }
     }
   }
 
 };
 
 function buscar() {
+
   const equipo = document.getElementById("equipo").value;
   const rotacion = document.getElementById("rotacion").value;
   const resultado = document.getElementById("resultado");
@@ -289,12 +251,14 @@ function buscar() {
   const info = datos[equipo].rotaciones[rotacion];
 
   resultado.style.display = "block";
+
   resultado.innerHTML = `
     <strong>Periodo:</strong> ${info.periodo}<br>
     <strong>Día - Turno:</strong> ${info.diaTurno}<br>
     <strong>Hospital:</strong> ${info.hospital}<br>
     <strong>Doctor:</strong> ${info.doctor}<br>
     <strong>Especialidad:</strong> ${info.especialidad}<br><br>
+
     <strong>Integrantes del equipo:</strong><br>
     ${datos[equipo].integrantes.join("<br>")}
   `;
